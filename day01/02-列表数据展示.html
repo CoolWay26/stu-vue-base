@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-列表数据展示</title>
+</head>
+<body>
+<div id="app">
+    <div>{{movies}}</div>
+    <div>{{movies[0]}}</div>
+    <div>
+        <ul>
+            <li v-for="(item, index) in movies">{{item}}</li>
+        </ul>
+    </div>
+</div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data() {
+            return {
+                message: '我喜欢的电影',
+                movies: ['盗梦空间', '新警察故事', '复仇者联盟', '最新的电影']
+            }
+        }
+    })
+</script>
+</html>

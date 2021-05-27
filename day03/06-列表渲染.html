@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>06-列表渲染</title>
+</head>
+<style>
+    [v-cloak] {
+        display: none;
+    }
+</style>
+<body>
+<div id="app" v-cloak>
+    <ul>
+        <li v-for="(item, index) in books">{{index+1}}.{{item.name}}：{{item.price}}元</li>
+    </ul>
+
+    <ul>
+        <li v-for="(value) in math">{{value}}</li>
+        <li v-for="(value,key) in math" :key="key">{{key}}：{{value}}</li>
+        <li v-for="(value,key,index) in math" :key="key">{{index+1}}.{{key}}：{{value}}</li>
+    </ul>
+
+    <span v-for="n in 10">{{n}}  </span>
+</div>
+
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data() {
+            return {
+                books: [
+                    {name: '语文书', price: 20},
+                    {name: '数学书', price: 30},
+                    {name: '英语书', price: 40}
+                ],
+                math: {name: '数学', price: 30, level: "六年级"}
+            }
+        }
+    })
+</script>
+</html>

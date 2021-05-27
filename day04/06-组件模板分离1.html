@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>06-组件模板分离</title>
+</head>
+<body>
+<div id="app">
+    <tem/>
+</div>
+
+<script src="../js/vue.js"></script>
+<!--x-template-->
+<script id="tem" type="text/x-template">
+    <div>
+        <h2>tem</h2>
+    </div>
+</script>
+
+<script>
+    Vue.component('tem', {
+        template: '#tem'
+    });
+
+    const vm = new Vue({
+        el: '#app',
+        data() {
+            return {}
+        },
+        components: {
+            tem: {
+                template: '#tem'
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

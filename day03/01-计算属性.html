@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01-计算属性</title>
+</head>
+<body>
+<div id="app">
+    <p>{{totalPrice}}</p>
+    <p>{{totalPrice2}}</p>
+</div>
+
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data() {
+            return {
+                books: [
+                    {name: '语文书', price: 20},
+                    {name: '数学书', price: 30},
+                    {name: '英语书', price: 40}
+                ]
+            }
+        },
+        computed: {
+            totalPrice: function () {
+                let totalPrice = 0;
+                // for (let i = 0; i < this.books.length; i++) {
+                //     totalPrice += this.books[i].price;
+                // }
+                for (let book of this.books) {
+                    totalPrice += book.price;
+                }
+                return totalPrice;
+            },
+            totalPrice2: {
+                get: function () {
+                    let totalPrice = 0;
+                    for (let book of this.books) {
+                        totalPrice += book.price;
+                    }
+                    return totalPrice;
+                },
+                set: function (value) {
+                    console.log(value);
+                }
+            }
+        }
+    });
+</script>
+</html>

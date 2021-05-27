@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>03-组件化基本</title>
+</head>
+<body>
+<div id="app">
+    <!--使用组件-->
+    <com_1></com_1>
+    <com_1></com_1>
+    <com_1></com_1>
+</div>
+
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    const com = Vue.extend({
+        template:
+            `<div>
+                <h2>模板</h2>
+            </div>`
+    });
+
+    //全局注册
+    Vue.component('com_1', com);
+
+    const vm = new Vue({
+        el: '#app',
+        data() {
+            return {}
+        },
+        //局部注册
+        components: {
+            com_1: com
+        }
+    });
+</script>
+</html>
+

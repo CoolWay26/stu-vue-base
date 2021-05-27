@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>03-计数器</title>
+</head>
+<body>
+<div id="app">
+    <h2>{{countNumber}}</h2>
+    <button type="button" @click="add">+1</button>
+    <button type="button" @click="minus">-1</button>
+</div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data() {
+            return {
+                countNumber: 0
+            }
+        },
+        methods: {
+            add: function () {
+                this.countNumber++;
+            },
+            minus: function () {
+                this.countNumber--;
+            }
+        }
+    })
+</script>
+</html>

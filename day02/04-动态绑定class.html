@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>04-动态绑定class</title>
+</head>
+<style>
+    .redColor {
+        color: red;
+    }
+
+    .blueColor {
+        color: blue;
+    }
+</style>
+<body>
+<div id="app">
+    <!--    <h3 :class="{类名1: boolean1, 类名2: boolean2}"></h3>-->
+    <h3 :class="{redColor: isRed, blueColor: isBlue}">看看v-bind怎么绑定class</h3>
+    <button type="button" @click="toRed">变红</button>
+    <button type="button" @click="toBlue">变蓝</button>
+
+</div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data() {
+            return {
+                isRed: true,
+                isBlue: false
+            }
+        },
+        methods: {
+            toRed: function () {
+                this.isRed = true;
+                this.isBlue = false;
+            },
+            toBlue: function () {
+                this.isRed = false;
+                this.isBlue = true;
+            }
+        }
+    });
+</script>
+</html>

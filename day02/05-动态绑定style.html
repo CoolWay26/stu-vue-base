@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>05-动态绑定style</title>
+</head>
+<body>
+<div id="app">
+    <!--    <h3 :style="{key1: value1, key2: value2}"></h3>-->
+    <h2 :style="{color: colorPortal, fontSize: sizePortal}">这是一个首页</h2>
+    <h2 :style="getStylePortal()">这是一个首页</h2>
+    <h2 :style="[protalStyle]">这是一个首页</h2>
+</div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+
+    const vm = new Vue({
+        el: '#app',
+        data() {
+            return {
+                colorPortal: 'red',
+                sizePortal: '50px',
+                // 注意单引号
+                protalStyle: {color: 'red', fontSize: '50px'}
+            }
+        },
+        methods: {
+            getStylePortal: function () {
+                return {color: this.colorPortal, fontSize: this.sizePortal};
+            }
+        }
+    })
+</script>
+</html>

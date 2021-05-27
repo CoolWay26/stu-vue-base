@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        /* gridtable */
+        table.gridtable {
+            width: 500px;
+            height: 400px;
+            font-family: verdana, arial, sans-serif;
+            font-size: 11px;
+            color: #333333;
+            border-width: 1px;
+            border-color: #666666;
+            border-collapse: collapse;
+        }
+
+        table.gridtable th {
+            border-width: 1px;
+            padding: 8px;
+            border-style: solid;
+            border-color: #666666;
+            background-color: #dedede;
+        }
+
+        table.gridtable td {
+            border-width: 1px;
+            padding: 8px;
+            text-align: center;
+            border-style: solid;
+            border-color: #666666;
+            background-color: #ffffff;
+        }
+
+    </style>
+</head>
+<body>
+<div id="app">
+    <div v-if="books.length">
+        <table class="gridtable">
+            <thead>
+            <tr>
+                <th></th>
+                <th>名称</th>
+                <th>价格</th>
+                <th>数量</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="(book,index) in books">
+                <td>{{book.id}}</td>
+                <td>{{book.name}}</td>
+                <td>{{book.price | priceFilter}}</td>
+                <td>
+                    <button type="button" @click="decrement(index)" :disabled="book.count==1">-</button>
+                    {{book.count}}
+                    <button type="button" @click="increment(index)">+</button>
+                </td>
+                <td>
+                    <button type="button" @click="removeBook(index)">移除</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <h2>总价：{{totalPrice}}</h2>
+    </div>
+    <div v-else>
+        <h3>购物车为空！</h3>
+    </div>
+</div>
+
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data() {
+            return {
+                books: [
+                    {id: 1, name: '语文书', price: 20, count: 1},
+                    {id: 2, name: '数学书', price: 30, count: 1},
+                    {id: 3, name: '英语书', price: 40, count: 1}
+                ]
+            }
+        },
+        methods: {
+            decrement(index) {
+                this.books[index].count--;
+            },
+            increment(index) {
+                this.books[index].count++;
+            },
+            removeBook(index) {
+                this.books.splice(index, 1);
+            },
+            getPrice() {
+                for(let i in this.books) {
+                    console.log(this.books[i].name);
+                }
+            }
+
+        },
+        computed: {
+            totalPrice() {
+                let totalPrice = 0;
+                for (let i = 0; i < this.books.length; i++) {
+                    totalPrice += this.books[i].price * this.books[i].count;
+                }
+                return totalPrice;
+            }
+        },
+        filters: {
+            priceFilter(price) {
+                return '￥' + price.toFixed(2);
+            }
+        }
+    });
+</script>
+</html>

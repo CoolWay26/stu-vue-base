@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-组件通信-$</title>
+</head>
+<body>
+<div id="app">
+    <zi ref="zi1"></zi>
+    <zi ref="zi2"></zi>
+    <zi ref="zi3"></zi>
+    <button type="button" @click="getZi">console</button>
+</div>
+
+<template id="zi">
+    <div>
+        <h2>{{message}}</h2>
+        <button type="button" @click="getFu">consoleZi</button>
+    </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+
+    Vue.component('zi', {
+        template: '#zi',
+        data() {
+            return {
+                message: '这是子组件'
+            }
+        },
+        methods: {
+            getFu() {
+                console.log(this.$parent.name);
+            }
+        }
+    });
+
+    const vm = new Vue({
+        el: '#app',
+        data() {
+            return {
+                name: '父组件的name'
+            }
+        },
+        methods: {
+            getZi() {
+                for (let c of this.$children) {
+                    console.log(c.message);
+                }
+                console.log(this.$refs.zi1.message);
+            }
+        }
+    });
+</script>
+</body>
+</html>

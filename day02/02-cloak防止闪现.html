@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-cloak防止闪现</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="app" v-cloak>{{message}}</div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    setTimeout(function () {
+        new Vue({
+            el: '#app',
+            data() {
+                return {
+                    message: '我不要闪现啊'
+                }
+            }
+        })
+    }, 1000);
+</script>
+
+</html>

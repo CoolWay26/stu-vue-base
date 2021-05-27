@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>03-事件监听-修饰符</title>
+    <style>
+        .out {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+        }
+
+        .in {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <!--事件修饰符-->
+    <div class="out" @click="outFocus">
+        <!--取消事件冒泡-->
+        <div class="in" @click.stop="inFocus"></div>
+    </div>
+    <!--取消默认行为-->
+    <a href="http://www.baidu.com" @click.prevent="testPrevent">baidu</a>
+
+    <!--按键修饰符-->
+    <div>
+        <input type="text" @keyup.13="test1"/>
+        <br/>
+        <br/>
+        <input type="text" @keyup.enter="test1"/>
+    </div>
+</div>
+
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        methods: {
+            outFocus() {
+                alert('out');
+            },
+            inFocus() {
+                alert('in');
+            },
+            testPrevent() {
+                alert('prevent');
+            },
+            test1(event) {
+                alert(event.target.value);
+            }
+        }
+    });
+</script>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="app">
+    <zi :number1="fuNum" @tonumber1="changeNumber"/>
+</div>
+
+<template id="zi">
+    <div>
+        <!--双向绑定自己的data-->
+        <h2>data: {{dNumber1}}</h2>
+        <input type="text" v-model="dNumber1"/>
+        <!--双向绑定自己的props-->
+        <h2>props: {{number1}}</h2>
+        <!--        <input type="text" @input="toProps"/>-->
+        <input type="text" v-model="numbertemp"/>
+    </div>
+</template>
+
+<script src="../js/vue.js"></script>
+<script>
+    Vue.component('zi', {
+        template: '#zi',
+        props: {
+            number1: {
+                type: Number,
+                default: 0
+            },
+
+        },
+        data() {
+            return {
+                dNumber1: 0,
+                numbertemp: 0
+            }
+        },
+        // methods: {
+        //     toProps(event) {
+        //         this.$emit('tonumber1', event.target.value);
+        //     }
+        // },
+        watch: {
+            numbertemp(newValue, oldValue) {
+                this.$emit('tonumber1', newValue);
+            }
+        }
+    });
+
+    const vm = new Vue({
+        el: '#app',
+        data() {
+            return {
+                fuNum: 0
+            }
+        },
+        methods: {
+            changeNumber(value) {
+                this.fuNum = value;
+            }
+        }
+    });
+</script>
+</body>
+</html>

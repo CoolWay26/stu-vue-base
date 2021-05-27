@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>09-组件通信父传子</title>
+</head>
+<body>
+<div id="app">
+    <fu></fu>
+</div>
+
+<template id="fu">
+    <div>
+        <!--通过属性绑定向子组件传递数据-->
+        <zi :movies="movies" :message="message"></zi>
+    </div>
+</template>
+
+<template id="zi">
+    <div>
+        <ul>
+            <li v-for="(movie,index) in movies">{{movie}}</li>
+        </ul>
+        <h2>{{message}}</h2>
+    </div>
+</template>
+
+<script src="../js/vue.js"></script>
+<script>
+
+    const zi = {
+        template: '#zi',
+        props: {
+            // 指定类型和默认值
+            message: {
+                message: String,
+                default: '回家去吧'
+            },
+            //Array和Object的默认值是函数
+            movies: {
+                type: Array,
+                default() {
+                    return ['没有电影了']
+                }
+            }
+        },
+        methods: {
+            show() {
+
+            }
+        }
+    };
+
+    const vm = new Vue({
+        el: '#app',
+        data() {
+            return {}
+        },
+        components: {
+            fu: {
+                template: '#fu',
+                data() {
+                    return {
+                        movies: ['哈利波特', '集结号', '天下无贼'],
+                        message: '看完收工'
+                    }
+                },
+                components: {
+                    zi: zi
+                }
+            }
+        }
+    });
+</script>
+</body>
+</html>

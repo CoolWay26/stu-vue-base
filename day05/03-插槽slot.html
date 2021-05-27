@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>03-插槽slot</title>
+</head>
+<body>
+<div id="app">
+    <zi>
+        <!--一个插槽可以匹配多个值-->
+        <h2>这是插槽</h2>
+        <h2>这是插槽1</h2>
+        <h2>这是插槽2</h2>
+    </zi>
+    <zi>
+    </zi>
+</div>
+
+<template id="zi">
+    <div>
+        <h2>插槽前面</h2>
+        <slot>
+            <!--插槽的默认值-->
+            <button type="button">这里是插槽的默认值</button>
+        </slot>
+        <h2>插槽后面</h2>
+    </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+    Vue.component('zi', {
+        template: '#zi'
+    });
+
+    const vm = new Vue({
+        el: '#app',
+        data() {
+            return {}
+        }
+    });
+</script>
+</body>
+</html>

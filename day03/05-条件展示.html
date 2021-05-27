@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>05-条件展示</title>
+</head>
+<body>
+<div id="app">
+    <input v-show="isShow==='早上'" placeholder="早上干什么">
+    <input v-show="isShow==='中午'" placeholder="中午干什么">
+    <button type="button" @click="toMorning()">早上</button>
+    <button type="button" @click="toNooning()">中午</button>
+</div>
+
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data() {
+            return {
+                isShow: '早上'
+            }
+        },
+        methods: {
+            toMorning() {
+                this.isShow = '早上';
+            },
+            toNooning() {
+                this.isShow = '中午';
+            }
+        }
+    });
+</script>
+</html>

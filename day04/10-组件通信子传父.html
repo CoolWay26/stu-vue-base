@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="app">
+    <fu/>
+</div>
+
+<template id="fu">
+    <div>
+        <zi :movies="movies" @zidetail="getDetail"></zi>
+    </div>
+</template>
+
+<template id="zi">
+    <div>
+        <span style="margin-left: 10px" v-for="(movie, index) in movies">
+            <button type="button" @click="ziDetails(movie.id)">{{movie.name}}</button>
+        </span>
+    </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+    Vue.component('fu', {
+        template: '#fu',
+        data() {
+            return {
+                movies: [{id: 'txwz', name: '天下无贼'}, {id: 'lldq', name: '流浪地球'}, {id: 'dmkj', name: '盗梦空间'}]
+            }
+        },
+        methods: {
+            getDetail(value) {
+                alert(value);
+            }
+        }
+    });
+
+    Vue.component('zi', {
+        template: '#zi',
+        props: {
+            movies: {
+                type: Array,
+                default() {
+                    return [];
+                }
+            }
+        },
+        data() {
+            return {}
+        },
+        methods: {
+            ziDetails(value) {
+                this.$emit('zidetail', value);
+                console.log(value);
+            }
+        }
+    });
+
+    const vm = new Vue({
+        el: '#app',
+        data() {
+            return {}
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01-插值语法</title>
+</head>
+<body>
+<div id="app">
+    <!--Mustache语法，可以是表达式-->
+    <p>{{name1 +' -- '+ name2}}</p>
+    <p>{{name1}} -- {{name2}}</p>
+    <!--v-text插值-->
+    <p v-text="name1 + ' -- ' + name2"></p>
+    <!--v-once一次性插值-->
+    <p v-once>{{name1}} -- {{name2}}</p>
+    <!--v-html解析html语句-->
+    <div v-html="hh"></div>
+    <!--v-pre显示原本内容-->
+    <div v-pre>{{v-pre这是啥就是啥}}</div>
+</div>
+</body>
+
+<script src="../js/vue.js"></script>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data() {
+            return {
+                name1: 'zs',
+                name2: 'ls',
+                age: 20,
+                hh: '<h3>我是通过v-html渲染的</h3>'
+            }
+        }
+    });
+</script>
+</html>

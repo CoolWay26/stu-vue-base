@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>04-条件渲染</title>
+</head>
+<body>
+<div id="app">
+    <input v-if="loginType" placeholder="请输入邮箱账号"/>
+    <input v-else placeholder="请输入手机号码"/>
+    <button type="button" @click="changeType">切换方式</button>
+    <br/>
+    <input v-if="loginType" placeholder="请输入邮箱账号" key="e-mail"/>
+    <input v-else placeholder="请输入手机号码"/>
+    <button type="button" @click="changeType" key="number">切换方式</button>
+</div>
+
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data() {
+            return {
+                loginType: true
+            }
+        },
+        methods: {
+            changeType() {
+                this.loginType = !this.loginType;
+            }
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>05-全局注册语法糖</title>
+</head>
+<body>
+<div id="app">
+    <fu/>
+</div>
+
+</body>
+<script src="../js/vue.js"></script>
+<script>
+
+    //全局注册组件语法糖
+    Vue.component('zi', {
+        template:
+            `<div>
+                <h2>FFFFFF</h2>
+            </div>`
+    });
+
+    // Vue.component('zi', {
+    //     template:
+    //         `<div>
+    //             <fu/>
+    //             <h2>ZZZZZZ</h2>
+    //         </div>`
+    // });
+
+    const vm = new Vue({
+        el: '#app',
+        data() {
+            return {}
+        },
+        //局部注册语法糖
+        components: {
+            fu: {
+                template:
+                    `<div>
+                        <zi/>
+                        <h2>ZZZZZZ</h2>
+                    </div>`
+            }
+        }
+    })
+</script>
+</html>

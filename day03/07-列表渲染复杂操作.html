@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>07-列表渲染复杂操作</title>
+    <style>
+        .arrStyle {
+            color: red;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+<div id="app">
+    <ul>
+        <li v-for="(value,index) in books" :class="{arrStyle: index===currentIndex}" @click="chooseThis(index)">
+            {{value.name}} : {{value.price}} 元
+        </li>
+    </ul>
+</div>
+
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data() {
+            return {
+                books: [
+                    {name: '语文书', price: 20},
+                    {name: '数学书', price: 30},
+                    {name: '英语书', price: 40}
+                ],
+                currentIndex: 0
+            }
+        },
+        methods: {
+            chooseThis(index) {
+                this.currentIndex = index;
+            }
+        }
+    });
+</script>
+</html>

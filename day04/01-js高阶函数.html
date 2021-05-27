@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="app"></div>
+
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data() {
+            return {}
+        },
+        methods: {}
+    });
+
+    const nums = [10, 20, 110, 120, 210, 220];
+    let newNums = nums.filter(function (n) {
+        return n < 100;
+    });
+    console.log(newNums);
+
+    let newNums2 = newNums.map(function (n) {
+        return n * 2;
+    });
+    console.log(newNums2);
+
+    let result = newNums2.reduce(function (previous, n) {
+        return previous + n;
+    }, 0);
+    console.log(result);
+
+    let newResult = nums.filter(function (n) {
+        return n < 100;
+    }).map(function (n) {
+        return n * 2;
+    }).reduce(function (previous, n) {
+        return previous + n;
+    }, 0);
+    console.log(newResult);
+</script>
+</html>

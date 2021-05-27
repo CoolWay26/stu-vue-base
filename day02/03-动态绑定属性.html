@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>03-动态绑定属性</title>
+    <style>
+        .smallImg {
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <img class="smallImg" v-bind:src="imgUrl"/>
+</div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data() {
+            return {
+                imgUrl: 'https://img.51miz.com/Element/00/89/14/24/640e7c2f_E891424_c8fd17f2.png'
+            }
+        }
+    });
+</script>
+</html>
