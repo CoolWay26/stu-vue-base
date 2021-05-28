@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="app"></div>
+
+<script src="../js/vue.js"></script>
+<script>
+    const vm = new Vue({
+        el: '#app',
+        data() {
+            return {}
+        }
+    });
+</script>
+<script>
+    //无参，无返回值（获取的返回值是undefined）
+    const alert1 = () => {
+        alert('箭头函数');
+    };
+    //有参，参数只有一个时可以省略()
+    const alert2 = num => {
+        return num;
+    };
+    //有返回值
+    const add1 = (num1, num2) => {
+        return num1 + num2;
+    };
+    //有返回值，代码只有一行时可以省略{return}
+    const add2 = (num1, num2) => num1 + num2;
+
+    alert1();
+    console.log(alert2(1));
+    console.log(add1(1, 2));
+    console.log(add2(1, 2));
+</script>
+</body>
+</html>
